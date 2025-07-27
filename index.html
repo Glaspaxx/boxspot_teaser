@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://logo.tawjihy.ma/boxspot_nobg.png" />
+    <title>BoxSpot - Votre réseau de points partenaires sécurisés</title>
+    <meta name="description" content="BoxSpot - Déposez et récupérez vos affaires en toute confiance, partout au Maroc. Réseau de partenaires vérifiés.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================== CSS RESET & VARIABLES ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Brand Colors */
+            --primary-blue: #011846;
+            --accent-green: #149a86;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-secondary: 'Poppins', sans-serif;
+            
+            /* Spacing System */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+            
+            /* Transitions */
+            --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Glass Effects */
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-backdrop: blur(20px);
+        }
+
+        /* ==================== BASE STYLES ==================== */
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ==================== ANIMATED BACKGROUND ==================== */
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1a365d  50%, var(--primary-blue) 100%);
+            overflow: hidden;
+        }
+
+        .particles-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(odd) {
+            animation-direction: reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-20px) translateX(10px);
+                opacity: 1;
+            }
+        }
+
+        .geometric-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+        }
+
+        .line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
+            height: 1px;
+            animation: lineMove 8s linear infinite;
+        }
+
+        @keyframes lineMove {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw);
+                opacity: 0;
+            }
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: var(--space-xl) var(--space-md);
+            position: relative;
+            color: var(--white);
+        }
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--space-xl);
+  animation: fadeInDown 1s ease-out;
+}
+
+/* Logo taille 2.5× */
+.logo-img {
+  max-height: 200px; /* plus grand */
+  width: auto;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 4px 12px rgba(20, 154, 134, 0.3));
+  cursor: pointer;
+}
+
+.logo-img:hover {
+  transform: scale(1.1) rotate(-2deg);
+  filter: drop-shadow(0 0 20px rgba(20, 154, 134, 0.8));
+}
+
+
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-family: var(--font-secondary);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+            animation: fadeInUp 1s ease-out 0.3s both;
+            background: linear-gradient(135deg, var(--white), #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-weight: 400;
+            margin-bottom: var(--space-2xl);
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .email-form {
+            display: flex;
+            gap: var(--space-sm);
+            max-width: 500px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: var(--space-md) var(--space-lg);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-xl);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: var(--glass-backdrop);
+            color: var(--white);
+            font-size: 1rem;
+            font-family: var(--font-primary);
+            transition: all var(--transition-normal);
+        }
+
+        .email-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 4px rgba(20, 154, 134, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .cta-button {
+            padding: var(--space-md) var(--space-xl);
+            background: linear-gradient(135deg, var(--accent-green), #0d9488);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: var(--font-primary);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left var(--transition-slow);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(20, 154, 134, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        /* ==================== PARTNER NETWORK RIBBON ==================== */
+        .partner-ribbon {
+            background: var(--white);
+            padding: var(--space-2xl) 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ribbon-container {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            width: calc(300px * 12); /* 6 cards * 2 for seamless loop */
+        }
+
+        .ribbon-container:hover {
+            animation-play-state: paused;
+        }
+
+        .partner-card {
+            flex: 0 0 300px;
+            background: var(--white);
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin: 0 var(--space-sm);
+            text-align: center;
+            transition: all var(--transition-normal);
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .partner-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-green);
+        }
+
+        .partner-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-sm);
+            display: block;
+        }
+
+        .partner-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: var(--space-xs);
+        }
+
+        .pulse-indicator {
+            position: absolute;
+            top: var(--space-sm);
+            right: var(--space-sm);
+            width: 12px;
+            height: 12px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-300px * 6));
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
+        }
+
+        .ribbon-cta {
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+
+        .ribbon-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-md) var(--space-xl);
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            transition: all var(--transition-normal);
+        }
+
+        .ribbon-button:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ==================== FEATURES GRID ==================== */
+        .features-section {
+            padding: var(--space-3xl) var(--space-md);
+            background: linear-gradient(135deg, var(--light-gray), var(--white));
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--font-secondary);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            text-align: center;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(20, 154, 134, 0.1), transparent);
+            transition: left var(--transition-slow);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(20, 154, 134, 0.15);
+            border-color: var(--accent-green);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            display: block;
+        }
+
+        .feature-title {
+            font-family: var(--font-secondary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: var(--space-sm);
+        }
+
+        .feature-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ==================== COUNTDOWN SECTION ==================== */
+        .countdown-section {
+            padding: var(--space-3xl) var(--space-md);
+            background: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .countdown-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .countdown-title {
+            font-family: var(--font-secondary);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: var(--space-xl);
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            min-width: 120px;
+            transition: all var(--transition-normal);
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(20, 154, 134, 0.2);
+        }
+
+        .countdown-number {
+            font-family: var(--font-secondary);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            display: block;
+            line-height: 1;
+            transition: all var(--transition-fast);
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: var(--space-xs);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--white);
+            padding: var(--space-2xl) var(--space-md) var(--space-lg);
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all var(--transition-normal);
+        }
+
+        .social-link:hover {
+            background: var(--accent-green);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-link:hover {
+            color: var(--accent-green);
+        }
+
+        .footer-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ==================== SCROLL ANIMATIONS ==================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 768px) {
+            .email-form {
+                flex-direction: column;
+            }
+
+            .countdown-timer {
+                gap: var(--space-md);
+            }
+
+            .countdown-item {
+                min-width: 100px;
+                padding: var(--space-md);
+            }
+
+            .countdown-number {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partner-card {
+                flex: 0 0 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: var(--space-lg) var(--space-sm);
+            }
+
+            .features-section,
+            .countdown-section,
+            .partner-ribbon {
+                padding-left: var(--space-sm);
+                padding-right: var(--space-sm);
+            }
+
+            .countdown-timer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ==================== ACCESSIBILITY ==================== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles for accessibility */
+        button:focus,
+        a:focus,
+        input:focus {
+            outline: 2px solid var(--accent-green);
+            outline-offset: 2px;
+        }
+
+        /* ==================== KEYFRAME ANIMATIONS ==================== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== ANIMATED BACKGROUND ==================== -->
+    <div class="animated-background">
+        <div class="particles-container" id="particlesContainer"></div>
+        <div class="geometric-lines" id="geometricLines"></div>
+    </div>
+
+    <!-- ==================== HERO SECTION ==================== -->
+<section class="hero" id="hero">
+  <div class="logo">
+    <img 
+      src="https://logo.tawjihy.ma/boxspot_nobg.png" 
+      alt="BoxSpot Logo"
+      class="logo-img"
+    />
+  </div>
+
+  <div class="hero-content">
+    <h1 class="hero-title">
+      Voyagez léger : déposez vos bagages et vivez votre ville à 100 %
+    </h1>
+    <p class="hero-subtitle">
+      Fini le poids sur les épaules. <strong>BoxSpot</strong> vous permet de confier vos effets personnels dans un réseau de points partenaires <strong>vérifiés, sécurisés et partout au Maroc</strong>.  
+      Explorez librement, récupérez vos affaires quand vous voulez.
+    </p>
+    <ul style="list-style:none;margin-bottom:2rem;">
+      <li style="margin:0.5rem 0;font-size:1.1rem;">✅ Hôtels, cafés et boutiques de confiance</li>
+      <li style="margin:0.5rem 0;font-size:1.1rem;">✅ Réservation immédiate en quelques clics</li>
+      <li style="margin:0.5rem 0;font-size:1.1rem;">✅ Vos bagages protégés et assurés</li>
+    </ul>
+    <form class="email-form" id="emailForm">
+      <input 
+        type="email" 
+        class="email-input" 
+        placeholder="Votre adresse email"
+        required
+        aria-label="Adresse email"
+        id="emailInput"
+      >
+      <button type="submit" class="cta-button" id="ctaButton">
+        Prévenez‑moi
+      </button>
+    </form>
+  </div>
+</section>
+
+
+
+    <!-- ==================== PARTNER NETWORK RIBBON ==================== -->
+    <section class="partner-ribbon fade-in">
+        <div class="ribbon-container" id="ribbonContainer">
+            <!-- First set of cards -->
+            <div class="partner-card">
+                <span class="partner-icon">🏨 </span>
+                <h3 class="partner-title">Hôtels</h3>
+                <div class="pulse-indicator"></div>
+            </div>
+            <div class="partner-card">
+                <span class="partner-icon">🏠</span>
+                <h3 class="partner-title">Riads & maisons d’hôtes</h3>
+                <div class="pulse-indicator"></div>
+            </div>
+            <div class="partner-card">
+                <span class="partner-icon">☕ </span>
+                <h3 class="partner-title">Cafés & salons de thé</h3>
+                <div class="pulse-indicator"></div>
+            </div>
+            <div class="partner-card">
+                <span class="partner-icon">🛍️</span>
+                <h3 class="partner-title">Boutiques de souvenirs</h3>
+                <div class="pulse-indicator"></div>
+            </div>
+            <div class="partner-card">
+                <span class="partner-icon">✈️</span>
+                <h3 class="partner-title">Agences de voyages</h3>
+                <div class="pulse-indicator"></div>
+            </div>
+            <div class="partner-card">
+                <span class="partner-icon">📚</span>
+                <h3 class="partner-title">Librairies & papeteries</h3>
+                <div class="pulse-indicator"></div>
+            </div>
+             <div class="partner-card">
+                <span class="partner-icon">💻 </span>
+                <h3 class="partner-title">Espaces de coworking</h3>
+                <div class="pulse-indicator"></div>
+            </div>
+            <div class="partner-card">
+                <span class="partner-icon">🏬</span>
+                <h3 class="partner-title">Centres commerciaux</h3>
+                <div class="pulse-indicator"></div>
+            </div>
+            <div class="partner-card">
+                <span class="partner-icon">👔</span>
+                <h3 class="partner-title">Pressings</h3>
+                <div class="pulse-indicator"></div>
+            </div>
+            <div class="partner-card">
+                <span class="partner-icon">🛒</span>
+                <h3 class="partner-title">Superettes & mini‑markets</h3>
+                <div class="pulse-indicator"></div>
+            </div>
+            <div class="partner-card">
+                <span class="partner-icon">⛽ </span>
+                <h3 class="partner-title">Stations‑service</h3>
+                <div class="pulse-indicator"></div>
+            </div>
+            <div class="partner-card">
+                <span class="partner-icon">🏋️</span>
+                <h3 class="partner-title">Salles de sport</h3>
+                <div class="pulse-indicator"></div>
+            </div>
+        </div>
+        
+        <div class="ribbon-cta">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdX8Sfz3-AHo86E0fwI3JEIQqoBCMAaFisk1sJ5ObcIuvRjwQ/viewform?usp=sharing&ouid=105729354954045835675" class="ribbon-button" target="_blank" rel="noopener noreferrer">
+                Devenir partenaire !
+                <span>→</span>
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- ==================== FEATURES GRID ==================== -->
+<section class="features-section fade-in" id="features">
+  <div class="features-container">
+    <h2 class="section-title">BoxSpot, la liberté de voyager léger</h2>
+    <div class="features-grid">
+      <div class="feature-card slide-in-left">
+        <span class="feature-icon">🔒</span>
+        <h3 class="feature-title">Sécurité 24/7</h3>
+        <p class="feature-description">Points partenaires sélectionnés avec soin, surveillance et traçabilité des dépôts.</p>
+      </div>
+
+      <div class="feature-card fade-in">
+        <span class="feature-icon">📲</span>
+        <h3 class="feature-title">Réservation en 1 clic</h3>
+        <p class="feature-description">Trouvez, réservez et déposez vos affaires via notre site web intuitive.</p>
+      </div>
+
+      <div class="feature-card slide-in-right">
+        <span class="feature-icon">🌍</span>
+        <h3 class="feature-title">Partout au Maroc</h3>
+        <p class="feature-description">Une couverture croissante dans les centres-villes, gares et lieux touristiques.</p>
+      </div>
+
+      <div class="feature-card slide-in-left">
+        <span class="feature-icon">⚡</span>
+        <h3 class="feature-title">Dépôt express</h3>
+        <p class="feature-description">Processus simplifié : en 2 minutes, vos affaires sont en lieu sûr.</p>
+      </div>
+
+      <div class="feature-card fade-in">
+        <span class="feature-icon">👀</span>
+        <h3 class="feature-title">Suivi en temps réel</h3>
+        <p class="feature-description">Notification à chaque étape, localisation instantanée, gestion via votre téléphone.</p>
+      </div>
+
+      <div class="feature-card slide-in-right">
+        <span class="feature-icon">💼</span>
+        <h3 class="feature-title">Liberté retrouvée</h3>
+        <p class="feature-description">Faites ce que vous aimez sans vous soucier de vos affaires.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    
+
+    <!-- ==================== COUNTDOWN SECTION ==================== -->
+    <section class="countdown-section fade-in" id="countdown">
+  <div class="countdown-container">
+    <h2 class="countdown-title">Lancement officiel dans...</h2>
+    <div class="countdown-timer" id="countdownTimer">
+      <div class="countdown-item">
+        <span class="countdown-number" id="days">30</span>
+        <span class="countdown-label">Jours</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="hours">12</span>
+        <span class="countdown-label">Heures</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="minutes">45</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="seconds">30</span>
+        <span class="countdown-label">Secondes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer fade-in">
+    <div class="footer-container">
+        <div class="social-links">
+        <a href="https://facebook.com/boxspot" class="social-link" aria-label="Facebook" target="_blank">
+            <img src="https://www.svgrepo.com/show/512120/facebook-176.svg" alt="Facebook" width="24" height="24" />
+        </a>
+        <a href="https://instagram.com/boxspot.ma" class="social-link" aria-label="Instagram" target="_blank">
+            <img src="https://www.svgrepo.com/show/521711/instagram.svg" alt="Instagram" width="24" height="24" />
+        </a>
+        <a href="https://linkedin.com/company/boxspot-ma" class="social-link" aria-label="LinkedIn" target="_blank">
+            <img src="https://www.svgrepo.com/show/521725/linkedin.svg" alt="LinkedIn" width="24" height="24" />
+        </a>
+        <a href="https://twitter.com/boxspotma" class="social-link" aria-label="Twitter" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="Twitter" width="24" height="24" />
+        </a>
+        <a href="mailto:contact@boxspot.ma" class="social-link" aria-label="Email">
+            <img src="https://www.svgrepo.com/show/533194/mail-alt.svg" alt="Email" width="24" height="24" />
+        </a>
+        </div>
+        <p class="footer-text">© BoxSpot – Tous droits réservés.</p>
+    </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // ==================== PERFORMANCE OPTIMIZATION ====================
+        let ticking = false;
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateAnimations);
+                ticking = true;
+            }
+        }
+
+        function updateAnimations() {
+            // Update scroll-based animations here
+            ticking = false;
+        }
+
+        // ==================== ANIMATED BACKGROUND ====================
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            const particleCount = window.innerWidth < 768 ? 30 : 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (4 + Math.random() * 4) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        function createGeometricLines() {
+            const container = document.getElementById('geometricLines');
+            const lineCount = window.innerWidth < 768 ? 3 : 5;
+            
+            for (let i = 0; i < lineCount; i++) {
+                const line = document.createElement('div');
+                line.className = 'line';
+                line.style.top = Math.random() * 100 + '%';
+                line.style.width = (20 + Math.random() * 60) + '%';
+                line.style.animationDelay = Math.random() * 8 + 's';
+                line.style.animationDuration = (6 + Math.random() * 4) + 's';
+                container.appendChild(line);
+            }
+        }
+
+        // ==================== SCROLL ANIMATIONS ====================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        function initScrollAnimations() {
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+            animatedElements.forEach(el => observer.observe(el));
+        }
+
+        // ==================== EMAIL FORM HANDLING ====================
+        function initEmailForm() {
+            const form = document.getElementById('emailForm');
+            const input = document.getElementById('emailInput');
+            const button = document.getElementById('ctaButton');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = input.value.trim();
+                if (!email || !isValidEmail(email)) {
+                    showFormFeedback('Veuillez entrer une adresse email valide', 'error');
+                    return;
+                }
+                
+                // Simulate form submission
+                button.textContent = 'Inscription...';
+                button.disabled = true;
+                button.style.opacity = '0.7';
+                
+                setTimeout(() => {
+                    button.textContent = 'Merci !';
+                    button.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                    showFormFeedback('Merci ! Vous serez informé du lancement.', 'success');
+                    
+                    setTimeout(() => {
+                        button.textContent = 'Restez informé';
+                        button.disabled = false;
+                        button.style.opacity = '1';
+                        button.style.background = 'linear-gradient(135deg, var(--accent-green), #0d9488)';
+                        input.value = '';
+                    }, 3000);
+                }, 1500);
+            });
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showFormFeedback(message, type) {
+            // Create feedback element if it doesn't exist
+            let feedback = document.getElementById('formFeedback');
+            if (!feedback) {
+                feedback = document.createElement('div');
+                feedback.id = 'formFeedback';
+                feedback.style.cssText = `
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    margin-top: 1rem;
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 8px;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    pointer-events: none;
+                    white-space: nowrap;
+                `;
+                document.querySelector('.email-form').style.position = 'relative';
+                document.querySelector('.email-form').appendChild(feedback);
+            }
+            
+            feedback.textContent = message;
+            feedback.style.background = type === 'success' ? 
+                'linear-gradient(135deg, #22c55e, #16a34a)' : 
+                'linear-gradient(135deg, #ef4444, #dc2626)';
+            feedback.style.color = 'white';
+            feedback.style.opacity = '1';
+            
+            setTimeout(() => {
+                feedback.style.opacity = '0';
+            }, 4000);
+        }
+
+        // ==================== COUNTDOWN TIMER ====================
+        function initCountdown() {
+            // Set launch date (30 days from now for demo)
+            const launchDate = new Date();
+            launchDate.setDate(launchDate.getDate() + 90);
+            launchDate.setHours(0, 0, 0, 0);
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = launchDate.getTime() - now;
+                
+                if (distance < 0) {
+                    document.getElementById('countdownTimer').innerHTML = '<h3>Lancé !</h3>';
+                    return;
+                }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                updateCountdownNumber('days', days);
+                updateCountdownNumber('hours', hours);
+                updateCountdownNumber('minutes', minutes);
+                updateCountdownNumber('seconds', seconds);
+            }
+            
+            function updateCountdownNumber(id, newValue) {
+                const element = document.getElementById(id);
+                if (element && element.textContent !== newValue.toString().padStart(2, '0')) {
+                    element.style.transform = 'scale(1.1)';
+                    element.style.color = '#1fb89e';
+                    
+                    setTimeout(() => {
+                        element.textContent = newValue.toString().padStart(2, '0');
+                        element.style.transform = 'scale(1)';
+                        element.style.color = 'var(--accent-green)';
+                    }, 150);
+                }
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        // ==================== SMOOTH SCROLLING ====================
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // ==================== KEYBOARD NAVIGATION ====================
+        function initKeyboardNavigation() {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    document.body.classList.add('keyboard-navigation');
+                }
+            });
+
+            document.addEventListener('mousedown', () => {
+                document.body.classList.remove('keyboard-navigation');
+            });
+        }
+
+        // ==================== REDUCED MOTION SUPPORT ====================
+        function initAccessibility() {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            
+            if (prefersReducedMotion.matches) {
+                document.documentElement.style.setProperty('--transition-fast', '0ms');
+                document.documentElement.style.setProperty('--transition-normal', '0ms');
+                document.documentElement.style.setProperty('--transition-slow', '0ms');
+                
+                // Disable CSS animations
+                const style = document.createElement('style');
+                style.textContent = `
+                    *, *::before, *::after {
+                        animation-duration: 0.01ms !important;
+                        animation-iteration-count: 1 !important;
+                        transition-duration: 0.01ms !important;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        // ==================== RESIZE HANDLER ====================
+        function handleResize() {
+            // Recreate particles on resize for optimal performance
+            const particlesContainer = document.getElementById('particlesContainer');
+            const linesContainer = document.getElementById('geometricLines');
+            
+            particlesContainer.innerHTML = '';
+            linesContainer.innerHTML = '';
+            
+            createParticles();
+            createGeometricLines();
+        }
+
+        // ==================== INITIALIZATION ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all components
+            createParticles();
+            createGeometricLines();
+            initScrollAnimations();
+            initEmailForm();
+            initCountdown();
+            initSmoothScrolling();
+            initKeyboardNavigation();
+            initAccessibility();
+            
+            // Add resize listener with debouncing
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(handleResize, 250);
+            });
+            
+            // Add scroll listener for performance optimization
+            window.addEventListener('scroll', requestTick, { passive: true });
+            
+            console.log('%cBoxSpot 🧳', 'color: #149a86; font-size: 24px; font-weight: bold;');
+            console.log('%cVotre réseau de points partenaires sécurisés', 'color: #011846; font-size: 14px;');
+            console.log('%cBientôt disponible partout au Maroc!', 'color: #149a86; font-size: 12px;');
+        });
+
+        // ==================== ERROR HANDLING ====================
+        window.addEventListener('error', function(e) {
+            console.error('BoxSpot Error:', e.error);
+        });
+
+        // ==================== SERVICE WORKER REGISTRATION ====================
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                // Service worker registration would go here for PWA features
+                console.log('Ready for service worker registration');
+            });
+        }
+    </script>
+</body>
+</html>
