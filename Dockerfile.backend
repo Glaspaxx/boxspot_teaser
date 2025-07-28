@@ -9,13 +9,16 @@ RUN npm install
 COPY . .
 RUN npm run build:server
 
-# Final stage: Serve backend with Node
+# Final stage: Run backend
 FROM node:18-slim
 
 WORKDIR /app
 
-COPY --from=backend-builder /app/dist ./dist
-COPY --from=backend-builder /app/package*.json ./
+# Copy built backend
+COPY --from=backend-builder /app/dist /app/dist
+
+# Copy only runtime deps
+COPY package*.json ./
 RUN npm install --omit=dev
 
 EXPOSE 4000
