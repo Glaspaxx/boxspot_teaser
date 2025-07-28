@@ -25,24 +25,24 @@ FROM node:18-slim
 
 WORKDIR /app
 
-# Add the environment variable here
-ENV BOXSPOT_API_KEY=$BOXSPOT_API_KEY
-
 # Copy compiled backend
 COPY --from=backend-builder /app/dist /app/dist
-COPY --from=backend-builder /app/.env /app/.env
 
-# Copy frontend dist folder and nginx
+# Copy frontend dist folder and nginx config
 COPY --from=frontend-builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Install nginx
 RUN apt-get update && apt-get install -y nginx && apt-get clean
 
-# Copy and set up nginx
+# Set up nginx runtime directory
 RUN mkdir -p /var/run/nginx
 
-# Start both backend and frontend using a small init process
+# Install process manager to run both backend and frontend
 RUN npm install -g concurrently
 
+# Expose port (optional, mostly for local docker run)
+EXPOSE 80
+
+# Start backend and frontend together
 CMD concurrently "node /app/dist/server/index.js" "nginx -g 'daemon off;'"
