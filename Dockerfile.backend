@@ -1,0 +1,27 @@
+# Stage 1: Build backend
+FROM node:18 AS backend-builder
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+RUN npm run build:server
+
+# Final stage: Serve backend with Node
+FROM node:18-slim
+
+WORKDIR /app
+
+# Copy backend output
+COPY --from=backend-builder /app/dist /app/dist
+
+# Copy only package.json for runtime
+COPY package*.json ./
+RUN npm install --omit=dev
+
+# Expose backend port
+EXPOSE 4000
+
+CMD ["node", "dist/server/index.js"]
