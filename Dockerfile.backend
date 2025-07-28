@@ -14,14 +14,10 @@ FROM node:18-slim
 
 WORKDIR /app
 
-# Copy backend output
-COPY --from=backend-builder /app/dist /app/dist
-
-# Copy only package.json for runtime
-COPY package*.json ./
+COPY --from=backend-builder /app/dist ./dist
+COPY --from=backend-builder /app/package*.json ./
 RUN npm install --omit=dev
 
-# Expose backend port
 EXPOSE 4000
 
 CMD ["node", "dist/index.js"]
