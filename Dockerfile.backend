@@ -7,7 +7,15 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
+
+# Ajout pour debug : vérifier les fichiers dans /app/server
+RUN echo "[DEBUG] Contenu de /app/server" && ls -la /app/server
+
+# Build du backend
 RUN npm run build:server
+
+# Ajout pour debug : vérifier que dist/index.js a bien été généré
+RUN echo "[DEBUG] Contenu de /app/dist après build" && ls -la /app/dist
 
 # Final stage: Run backend
 FROM node:18-slim
@@ -16,6 +24,9 @@ WORKDIR /app
 
 # Copy built backend
 COPY --from=backend-builder /app/dist /app/dist
+
+# Ajout pour debug : vérifier les fichiers copiés
+RUN echo "[DEBUG] Contenu de /app/dist dans l'image finale" && ls -la /app/dist
 
 # Copy only runtime deps
 COPY package*.json ./
