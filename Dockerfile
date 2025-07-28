@@ -1,5 +1,5 @@
-# Stage 1: Build Vite app
-FROM node:18 AS builder
+# Stage 1: Build Vite frontend
+FROM node:18 AS frontend-builder
 
 WORKDIR /app
 
@@ -9,15 +9,37 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve with nginx
-FROM nginx:stable-alpine
+# Stage 2: Build backend
+FROM node:18 AS backend-builder
 
-# Copy build output from Vite
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /app
 
-# Custom nginx config for SPA routing
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+RUN npm run build:server
+
+# Stage 3: Final image (backend + Nginx for frontend)
+FROM node:18-slim
+
+WORKDIR /app
+
+# Copy compiled backend
+COPY --from=backend-builder /app/dist /app/dist
+COPY --from=backend-builder /app/.env /app/.env
+
+# Copy frontend dist folder and nginx
+COPY --from=frontend-builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+# Install nginx
+RUN apt-get update && apt-get install -y nginx && apt-get clean
 
-CMD ["nginx", "-g", "daemon off;"]
+# Copy and set up nginx
+RUN mkdir -p /var/run/nginx
+
+# Start both backend and frontend using a small init process
+RUN npm install -g concurrently
+
+CMD concurrently "node /app/dist/server/index.js" "nginx -g 'daemon off;'"
