@@ -25,6 +25,9 @@ FROM node:18-slim
 
 WORKDIR /app
 
+# Add the environment variable here
+ENV BOXSPOT_API_KEY=$BOXSPOT_API_KEY
+
 # Copy compiled backend
 COPY --from=backend-builder /app/dist /app/dist
 COPY --from=backend-builder /app/.env /app/.env
