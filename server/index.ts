@@ -30,7 +30,7 @@ app.post('/api/subscribe', async (req, res) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        chat_id: '-902707427',
+        chat_id: '-1002400561020',
         message: `Nouvelle inscription newsletter: ${email}`
       })
     });
